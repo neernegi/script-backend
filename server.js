@@ -1,0 +1,28 @@
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import { connectDB } from "./config/db.js";
+import taskRouter from "./routes/task.route.js";
+import boardRouter from "./routes/board.route.js";
+
+dotenv.config();
+
+const app = express();
+
+app.use(express.json());
+app.use(
+  cors({
+    origin: "https://script-server-1-4bnd.onrender.com",
+    credentials: true,
+  })
+);
+
+connectDB();
+
+app.use("/", taskRouter);
+app.use("/", boardRouter);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
