@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://script-server-1-4bnd.onrender.com",
+    origin: "https://script-backend-eq54.onrender.com",
     credentials: true,
   })
 );
